@@ -1,5 +1,19 @@
 # Bosch Sensortec BME280 Combined humidity and pressure sensor
 
+## 2026-03-01 local (hbarta) changes to this code
+
+## 2026-03-01 Motivation
+
+* This code does not use WiringPi.
+* Written in C.
+
+## 2026-03-01 Plan
+
+1. Modify as a single pass.
+2. Output in JSON format.
+3. Add timestamp and device ID.
+4. (Future) Modify to work with BMP280 as well.
+
 ## C language demonstration code for the Raspberry Pi
 
 ### Tested with: Raspberry Pi 4B / Raspbian GNU/Linux 11 (bullseye)
