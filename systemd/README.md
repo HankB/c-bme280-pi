@@ -1,3 +1,8 @@
+# Systemd units
+
+* `bme280.timer` to kick off the process
+* `bme280.service` to collect and read the sensor"
+
 ```bash
 # Install as a user unit (recommended):
 mkdir -p ~/.config/systemd/user
