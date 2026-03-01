@@ -11,6 +11,9 @@
 
 #include "compensation.h"
 
+static const int buf_len = 128;
+static char buf[buf_len];
+
 int main(void) {
     int fd = 0;
     uint8_t dataBlock[8];
@@ -62,7 +65,6 @@ int main(void) {
          * See section 9, appendix B of the Bosch technical
          * datasheet for details on measurement time calculation.
          */
-        sleep(1);
 
         /* check data is ready to read */
         if ((i2c_smbus_read_byte_data(fd, STATUS) & 0x9) != 0) {
@@ -88,6 +90,7 @@ int main(void) {
         /* calculate and print compensated temp. This function is called first, as it also sets the
          * t_fine global variable required by the next two function calls
          */
+#if 0
         printf("sensor temp: %.2f°C  ", BME280_compensate_T_double(temp_int));
 
         station_press = BME280_compensate_P_double(press_int) / 100.0;
@@ -98,7 +101,14 @@ int main(void) {
 
         /* calculate and print compensated humidity */
         printf("humidity: %.2f %%rH\n", BME280_compensate_H_double(hum_int));
-    }
+#endif
+        snprintf(buf, buf_len, "%f, %f, %f\n", 
+                BME280_compensate_T_double(temp_int),
+                BME280_compensate_P_double(press_int) / 100.0,
+                BME280_compensate_H_double(hum_int);
+                )
+        sleep(1);
+        }
 
     return 0;
 }
