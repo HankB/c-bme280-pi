@@ -1,12 +1,12 @@
+
 [Unit]
-Description=BME280 sensor read and publish
+Description=BME280 sensor read and publish (user unit)
 After=network-online.target
 
 [Service]
 Type=oneshot
 WorkingDirectory=/home/hbarta/Programming/Pi/c-bme280-pi
 ExecStart=/bin/sh -c './bme280 | mosquitto_pub -t "sensors/bme280" -l'
-RemainAfterExit=no
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

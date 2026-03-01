@@ -1,5 +1,6 @@
+
 [Unit]
-Description=Run bme280 every minute
+Description=Run bme280 every minute (user timer)
 
 [Timer]
 OnCalendar=*-*-* *:*:00
