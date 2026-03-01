@@ -5,8 +5,12 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-WorkingDirectory=/home/hbarta/Programming/Pi/c-bme280-pi
-ExecStart=/bin/sh -c './bme280 | mosquitto_pub -t "sensors/bme280" -l'
+WorkingDirectory=/home/hbarta/bin/bme280
+Environment=BROKER=mqtt
+Environment=PORT=1883
+Environment=TOPIC="HA/latham/dining_rm_west/temp_humidity_press"
+ExecStartPre=/bin/sh -c 'mosquitto_pub -h "${BROKER}" -p "${PORT}" -t "${TOPIC}" -m "ping" -q 0 || exit 1'
+ExecStart=/bin/sh -c './bme280 | mosquitto_pub -h "${BROKER}" -p "${PORT}" -t "${TOPIC}" -l'
 
 [Install]
 WantedBy=default.target
