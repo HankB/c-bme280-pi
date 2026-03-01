@@ -1,3 +1,4 @@
 *.o
 bme280
 .vscode/
+.bme280.c.swp
