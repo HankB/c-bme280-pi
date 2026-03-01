@@ -1,0 +1,10 @@
+[Unit]
+Description=Run bme280 every minute
+
+[Timer]
+OnCalendar=*-*-* *:*:00
+Unit=bme280.service
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -12,7 +12,8 @@
 1. Modify as a single pass.
 2. Output in JSON format.
 3. Add timestamp and device ID.
-4. (Future) Modify to work with BMP280 as well.
+4. Add Systemd unit files (timer and service) to execute this periodically and to pipe output to `mosquitto_pub`.
+5. (Future) Modify to work with BMP280 as well.
 
 ## C language demonstration code for the Raspberry Pi
 
