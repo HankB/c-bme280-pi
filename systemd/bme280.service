@@ -5,7 +5,7 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-WorkingDirectory=/home/hbarta/bin/bme280
+WorkingDirectory=/home/hbarta/bin/
 Environment=BROKER=mqtt
 Environment=PORT=1883
 Environment=TOPIC="HA/latham/dining_rm_west/temp_humidity_press"
