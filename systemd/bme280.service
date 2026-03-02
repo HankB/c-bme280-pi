@@ -10,7 +10,8 @@ Environment=BROKER=mqtt
 Environment=PORT=1883
 Environment=TOPIC="HA/latham/dining_rm_west/temp_humidity_press"
 ExecStartPre=/bin/sh -c 'nc -z -w5 "${BROKER}" "${PORT}" || exit 1'
-ExecStart=/bin/sh -c './bme280 | mosquitto_pub -h "${BROKER}" -p "${PORT}" -t "${TOPIC}" -l'
+ExecStart=/bin/sh -c './bme280 2>>/tmp/bme288.err| \
+    mosquitto_pub -h "${BROKER}" -p "${PORT}" -t "${TOPIC}" -l'
 
 [Install]
 WantedBy=default.target
